@@ -533,8 +533,7 @@ img {
   left: 0px;
   top: 0px;
   background: rgba(0, 0, 0, 0.2);
-  transition: opacity 500ms linear, visibility 500ms linear, scale 500ms linear,
-    translate 500ms linear;
+  transition: opacity 500ms linear, visibility 500ms linear, scale 500ms linear;
 }
 
 .backdrop.is-hidden {
