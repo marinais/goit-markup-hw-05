@@ -59,6 +59,10 @@ img {
 
 .page-header {
   border-bottom: 1px solid #ececec;
+  /* position: absolute;
+  width: 100%;
+  height: 80px;
+  background-color: var(--primary-white-color); */
 }
 
 .logo {
@@ -97,6 +101,8 @@ img {
   letter-spacing: 0.02em;
   padding-top: 32px;
   padding-bottom: 32px;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-nav .link:hover,
@@ -106,6 +112,19 @@ img {
 
 .site-nav .link.current {
   color: var(--accent-color);
+  position: relative;
+}
+
+.site-nav .link.current::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  left: 0px;
+  top: 76px;
+
+  background: #2196f3;
+  border-radius: 2px;
 }
 
 .communication {
@@ -126,6 +145,8 @@ img {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .communication .link-mail:hover,
@@ -212,6 +233,8 @@ img {
   min-width: 200px;
   height: 50px;
   cursor: pointer;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button.primary:hover,
 .button.primary:focus {
@@ -269,10 +292,29 @@ img {
 .about-list {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .about-list .item + .item {
   margin-left: 30px;
+}
+
+.about-list .item-name {
+  position: absolute;
+  width: 370px;
+  height: 70px;
+  padding-top: 27px;
+  padding-bottom: 27px;
+
+  top: 224px;
+
+  color: var(--primary-white-color);
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+
+  background: rgba(47, 48, 58, 0.8);
 }
 
 /* Team */
@@ -332,10 +374,13 @@ img {
   height: 44px;
   background-color: transparent;
   border-radius: 50%;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-list-icon {
   fill: #afb1b8;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-list-link:hover,
 .social-list-link:focus {
@@ -371,10 +416,14 @@ img {
   border: 1px solid #afb1b8;
   box-sizing: border-box;
   border-radius: 4px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-list-link .clients-list-icon {
   fill: #afb1b8;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-list-link:hover,
@@ -428,6 +477,8 @@ img {
   font-style: normal;
   font-size: 14px;
   line-height: 1.71;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-link:hover,
@@ -462,6 +513,8 @@ img {
 
 .footer-social-container .social-list-link {
   background-color: rgba(255, 255, 255, 0.1);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-social-container .social-list-icon {
@@ -471,6 +524,59 @@ img {
 .footer-social-container .social-list-link:hover,
 .footer-social-container .social-list-link:focus {
   background-color: var(--accent-color);
+}
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.2);
+  transition: opacity 500ms linear, visibility 500ms linear, scale 500ms linear,
+    translate 500ms linear;
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  width: 528px;
+  height: 581px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: var(--primary-white-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--primary-white-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  cursor: pointer;
+}
+
+.modal-close-icon {
+  padding: 3px 3px 4px 4px;
+  width: 18px;
+  height: 18px;
 }
 
 /* Portfolio */
@@ -499,6 +605,10 @@ img {
   font-size: 16px;
   line-height: 1.63;
   cursor: pointer;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu-list .item {
@@ -529,6 +639,35 @@ img {
   height: 404px;
   margin-right: 30px;
   margin-bottom: 30px;
+  transition-property: box-shadow;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.overlay {
+  position: absolute;
+  color: var(--primary-white-color);
+  background-color: rgba(33, 150, 243, 0.9);
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 28px;
+  width: 100%;
+  height: 294px;
+  left: 0px;
+  top: 0px;
+  padding: 63px 24px;
+  text-align: left;
+  overflow: auto;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-item:hover .overlay {
+  transform: translateY(0%);
 }
 
 .portfolio-item:hover {
